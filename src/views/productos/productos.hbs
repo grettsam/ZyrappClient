@@ -1,0 +1,81 @@
+<div class="d-flex justify-content-between">
+  <h3>Productos</h3>
+  <a href="/productos/addProductos" class="btn btn-success"><i class="far fa-plus-square"></i> Nuevo producto </a>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card tableStock">
+      <div class="card-body">
+        <h5 class="card-title">Stock de productos</h5>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 mt-4 productos-slider">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Productos más vendidos</h4>
+        <div class="item-slider">
+          {{! item }}
+          <div class="producto-item">
+            <img
+              src="https://www.semilleriasanalfonso.cl/wp-content/uploads/2021/04/Pak_Choi_Canton_White_720x-1.jpg"
+              alt=""
+            />
+            <p>Titulo<br />53 unidades</p>
+          </div>
+          {{! item }}
+          <div class="producto-item">
+            <img
+              src="https://www.semilleriasanalfonso.cl/wp-content/uploads/2021/04/Pak_Choi_Canton_White_720x-1.jpg"
+              alt=""
+            />
+            <p>Titulo<br />53 unidades</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-6 mt-4 productos-slider">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Productos menos vendidos</h4>
+        <div class="item-slider">
+          {{! item }}
+          <div class="producto-item">
+            <img
+              src="https://www.semilleriasanalfonso.cl/wp-content/uploads/2021/04/Pak_Choi_Canton_White_720x-1.jpg"
+              alt=""
+            />
+            <p>Titulo<br />53 unidades</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

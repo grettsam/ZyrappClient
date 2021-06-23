@@ -1,0 +1,110 @@
+
+:root{
+    --primary-color:#b2a800
+    --secondary-color:#434014
+}
+
+body {
+    background-color: #b2a9004d;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+.containerMain{
+    display: flex;
+}
+.navbarMain{
+    width: 15%;
+    height: auto;
+    background-color: #b2a800;
+}
+.bodyMain{
+    width: 85%;
+    padding: 50px;
+}
+/*NavBar*/
+.navbar{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;  
+    text-align: center;
+}
+.navbar_avatarUser{
+    outline: none;
+    width: 150px;
+    height: 150px;
+    background-color: aliceblue;
+    border-radius: 50%;
+    margin-top: 70px;
+}
+.navbar h3{
+    padding:  10px ;
+    font-size:20px ;
+}
+.navbar_listButton{
+    list-style: none;
+    text-align: left;
+    padding: 0;
+  
+    width: 100%;
+    margin: 0 auto;
+}
+.navbar_listButton li{
+    padding: 10px;
+    font-weight: 700;
+    border-top: solid #43401442 1px;
+    width: 95%;
+    padding-left: 30px;
+}
+.navbar_listButton a{
+    text-decoration: none;
+    color: #434014;
+}
+.navbar_listButton a:hover{
+    text-decoration: none;
+    color: #fcfae0a6;
+    transition: .2s;
+}
+/*Home*/
+.containerHome img{
+    width: 24%;
+    height: 24%;
+}
+
+
+/*Productos*/
+
+.tableStock{
+    height: 55vh;
+    overflow-y: scroll;
+}
+
+.productos-slider .card{
+overflow-x: scroll;
+}
+
+.productos-slider .card-body .item-slider{
+    display: flex;
+}
+.producto-item{
+    cursor: pointer;
+    text-align: center;
+    margin: 0 10px;
+    background:#b2a9004d;
+    border-radius:10px;
+    color: #434014;
+    
+}
+
+.producto-item:hover{
+
+    transition: .5s;
+    opacity: 0.8;
+}
+
+.productos-slider img{
+    border-radius: 10px 10px 0 0;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}

@@ -1,70 +1,103 @@
 <h3>Agregar Producto</h3>
-<div class="">
-    <div class="input-group mb-3">
-    <span class="input-group-text" id="basic-addon1">@</span>
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Username"
-      aria-label="Username"
-      aria-describedby="basic-addon1"
-    />
+
+<form action="/productos/addProductos" method="POST" enctype="multipart/form-data">
+
+  <div class="row">
+
+    <div class="mb-3 col-md-6">
+      <label for="nombre" class="form-label">Nombre del producto</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nombre"
+        name="nombre"
+        required
+        autofocus
+      />
+      <div class="form-text">Ingresa el nombre preciso de tu producto</div>
+    </div>
+    <div class="mb-3 col-md-6">
+      <label for="categoria" class="form-label">Categoria del producto</label>
+      <select class="form-select" required name="categoria" id="categoria">
+        <option value="semilla">Semilla</option>
+        <option value="esquejes">Esquejes</option>
+        <option value="flores">Flores</option>
+        <option value="planta">Planta</option>
+        <option value="cactus">Cactus</option>
+        <option value="suculentas">Suculentas</option>
+        <option value="arbol">Arbol</option>
+        <option value="tierra">Tierra</option>
+        <option value="fertilizante">Fertilizante</option>
+        <option value="insumos">Insumos</option>
+      </select>
+      <div class="form-text">Selecciona la categoria que más se le acerca a tu
+        producto</div>
+    </div>
+    <div class="mb-3 col-md-3">
+      <label for="stock" class="form-label">Stock del producto</label>
+      <input
+        type="number"
+        class="form-control"
+        id="stock"
+        name="stock"
+        required
+        autofocus
+      />
+      <div class="form-text">Ingresa el stock actual de tu producto</div>
+    </div>
+    <div class="mb-3 col-md-3">
+      <label for="valor" class="form-label">Valor del producto</label>
+
+      <input
+        type="number"
+        class="form-control"
+        id="valor"
+        name="valor"
+        required
+        autofocus
+      />
+      <div class="form-text">Ingresa el valor de tu producto</div>
+    </div>
+
+    <div class="mb-3 col-md-6">
+      <label for="descripcion" class="form-label">Descripción del producto</label>
+      <textarea
+        class="form-control"
+        id="descripcion"
+        name="descripcion"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <div class="mb-3 form-group col-md-6">
+      <label for="pic1_producto" class="form-label">Foto principal (Obligatoria)</label>
+      <input
+        type="file"
+        name="pic1_producto"
+        id="pic1_producto"
+        class="form-control"
+        accept="image/png, .jpeg, .jpg, image/gif"
+        required
+      />
+      <div class="form-text">Máximo 2MB. Solo acepta archivos formato: .jpg
+        .jpeg .png .gif
+      </div>
+    </div>
+    <div class="mb-3 form-group col-md-6">
+      <label for="pic1_producto" class="form-label">Foto secundaria</label>
+      <input
+        type="file"
+        name="pic2_producto"
+        id="pic2_producto"
+        class="form-control"
+        accept="image/png, .jpeg, .jpg, image/gif"
+      />
+      <div class="form-text">Máximo 2MB. Solo acepta archivos formato: .jpg
+        .jpeg .png .gif
+      </div>
+    </div>
+
   </div>
 
-  <div class="input-group mb-3">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Recipient's username"
-      aria-label="Recipient's username"
-      aria-describedby="basic-addon2"
-    />
-    <span class="input-group-text" id="basic-addon2">@example.com</span>
-  </div>
-
-  <label for="basic-url" class="form-label">Your vanity URL</label>
-  <div class="input-group mb-3">
-    <span
-      class="input-group-text"
-      id="basic-addon3"
-    >https://example.com/users/</span>
-    <input
-      type="text"
-      class="form-control"
-      id="basic-url"
-      aria-describedby="basic-addon3"
-    />
-  </div>
-
-  <div class="input-group mb-3">
-    <span class="input-group-text">$</span>
-    <input
-      type="text"
-      class="form-control"
-      aria-label="Amount (to the nearest dollar)"
-    />
-    <span class="input-group-text">.00</span>
-  </div>
-
-  <div class="input-group mb-3">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Username"
-      aria-label="Username"
-    />
-    <span class="input-group-text">@</span>
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Server"
-      aria-label="Server"
-    />
-  </div>
-
-  <div class="input-group">
-    <span class="input-group-text">With textarea</span>
-    <textarea class="form-control" aria-label="With textarea"></textarea>
-  </div>
-  <button class="btn btn-success">Agregar</button>
-  </div>
+  <button type="submit" class="btn btn-success">Agregar</button>
+</form>

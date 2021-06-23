@@ -74,15 +74,19 @@ body {
 
 /*Productos*/
 
-.tableStock{
+.tablaStock{
     height: 55vh;
     overflow-y: scroll;
 }
-
-.productos-slider .card{
-overflow-x: scroll;
+.tablaStock img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
 }
-
+.productos-slider .card{
+    overflow-x: scroll;
+}
 .productos-slider .card-body .item-slider{
     display: flex;
 }
@@ -93,15 +97,11 @@ overflow-x: scroll;
     background:#b2a9004d;
     border-radius:10px;
     color: #434014;
-    
 }
-
 .producto-item:hover{
-
     transition: .5s;
     opacity: 0.8;
 }
-
 .productos-slider img{
     border-radius: 10px 10px 0 0;
     width: 100px;

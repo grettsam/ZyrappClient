@@ -1,34 +1,48 @@
 <div class="d-flex justify-content-between">
   <h3>Productos</h3>
-  <a href="/productos/addProductos" class="btn btn-success"><i class="far fa-plus-square"></i> Nuevo producto </a>
+  <a href="/productos/addProductos" class="btn btn-success"><i
+      class="far fa-plus-square"
+    ></i>
+    Nuevo producto
+  </a>
 </div>
 <div class="row">
   <div class="col-md-12">
-    <div class="card tableStock">
+    <div class="card tablaStock">
       <div class="card-body">
         <h5 class="card-title">Stock de productos</h5>
         <table class="table">
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
+              <th scope="col">Foto</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Stock</th>
+              <th scope="col">Valor</th>
+              <th scope="col">Ventas</th>
+              <th scope="col">Creación</th>
+              <th scope="col">Opciones</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
+            {{#each productos}}
+              <tr>
+                <th scope="row">{{producto_id}}</th>
+                <td><img src={{pic1_producto}} /></td>
+                <td>{{nombre}}</td>
+                <td>{{categoria}}</td>
+                <td>{{stock}}</td>
+                <td>{{valor}}</td>
+                <td>{{total_ventas}}</td>
+                <td>{{timeago creacion}}</td>
+                <td>
+                  <a href="" class="btn btn-info">E</a>
+                  <a href="" class="btn btn-success">V</a>
+                  <a href="" class="btn btn-danger">D</a>
+                </td>
+              </tr>
+            {{/each}}
           </tbody>
         </table>
       </div>
@@ -39,22 +53,13 @@
       <div class="card-body">
         <h4 class="card-title">Productos más vendidos</h4>
         <div class="item-slider">
-          {{! item }}
-          <div class="producto-item">
-            <img
-              src="https://www.semilleriasanalfonso.cl/wp-content/uploads/2021/04/Pak_Choi_Canton_White_720x-1.jpg"
-              alt=""
-            />
-            <p>Titulo<br />53 unidades</p>
-          </div>
-          {{! item }}
-          <div class="producto-item">
-            <img
-              src="https://www.semilleriasanalfonso.cl/wp-content/uploads/2021/04/Pak_Choi_Canton_White_720x-1.jpg"
-              alt=""
-            />
-            <p>Titulo<br />53 unidades</p>
-          </div>
+          {{! Hay que cambiar el nombre de abajo ya que tiene que mostrar los mas vendidos }}
+          {{#each productos}}
+            <div class="producto-item">
+              <img src={{pic1_producto}} />
+              <p>{{nombre}}<br />{{total_ventas}} unidades</p>
+            </div>
+          {{/each}}
         </div>
       </div>
     </div>
@@ -65,14 +70,13 @@
       <div class="card-body">
         <h4 class="card-title">Productos menos vendidos</h4>
         <div class="item-slider">
-          {{! item }}
-          <div class="producto-item">
-            <img
-              src="https://www.semilleriasanalfonso.cl/wp-content/uploads/2021/04/Pak_Choi_Canton_White_720x-1.jpg"
-              alt=""
-            />
-            <p>Titulo<br />53 unidades</p>
-          </div>
+          {{! Hay que cambiar el nombre de abajo ya que tiene que mostrar los menos vendidos }}
+          {{#each productos}}
+            <div class="producto-item">
+              <img src={{pic1_producto}} />
+              <p>{{nombre}}<br />{{total_ventas}} unidades</p>
+            </div>
+          {{/each}}
         </div>
       </div>
     </div>

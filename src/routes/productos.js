@@ -46,19 +46,18 @@ router.use(
   }).fields([{ name: "pic1_producto" }, { name: "pic2_producto" }])
 );
 
+//*******            SHOW            ******/
+//Metodo async para ver los productos en la vista principal
 router.get("/", async (req, res) => {
   const productos = await pool.query("SELECT * FROM productos");
   res.render("productos/productos", { productos });
-
 });
 
 //*******            CREATE            ******/
 //Metodo async para enviar la query para agregar un nuevo producto.
-
 router.get("/addProductos", (req, res) => {
   res.render("productos/addProductos");
 });
-
 router.post("/addProductos", async (req, res) => {
   const { nombre, categoria, stock, valor, descripcion } = req.body;
   const newProducto = {
@@ -72,9 +71,61 @@ router.post("/addProductos", async (req, res) => {
     // admin_id: req.user.admin_id,
   };
   await pool.query(`INSERT INTO productos set ?`, [newProducto]);
-  // req.flash("success", "Guia creada");
   res.redirect("/productos");
-  // res.send("Guardado y todo OK");
+});
+
+//*******            MORE            ******/
+//Metodo async para ver el detalle completo del producto
+router.get("/moreProductos/:id", async (req, res) => {
+  const { id } = req.params;
+  const productos = await pool.query(
+    "SELECT * FROM productos WHERE producto_id = ?",
+    [id]
+  );
+  res.render("productos/moreProductos", { producto: productos[0] });
+});
+
+//*******            DELETE            ******/
+//Metodo async para eliminar un producto
+router.get("/deleteProductos/:id", async (req, res) => {
+  const { id } = req.params;
+  const productos = await pool.query(
+    "DELETE FROM productos WHERE producto_id = ?",
+    [id]
+  );
+  res.redirect("/productos");
+});
+
+//*******            UPDATE            ******/
+//Metodo async para ver el detalle completo del producto
+router.get("/editProductos/:id", async (req, res) => {
+  const { id } = req.params;
+  const productos = await pool.query(
+    "SELECT * FROM productos WHERE producto_id = ?",
+    [id]
+  );
+  res.render("productos/editProductos", { producto: productos[0] });
+});
+router.post("/editProductos/:id", async (req, res) => {
+  const { id } = req.params;
+  const { nombre, categoria, stock, valor, descripcion } = req.body;
+  const newProducto = {
+    nombre,
+    categoria,
+    stock,
+    valor,
+    descripcion,
+    pic1_producto: `http://localhost:4000/upload/productos/${picProducto[0]}`,
+    pic2_producto: `http://localhost:4000/upload/productos/${picProducto[1]}`,
+    // admin_id: req.user.admin_id,
+  };
+  console.log(newProducto);
+  console.log(id);
+  await pool.query(`UPDATE productos set ? WHERE producto_id= ?`, [
+    newProducto,
+    id,
+  ]);
+  res.redirect("/productos");
 });
 
 module.exports = router;

@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title"><h3 class="text-center">Ficha del producto</h3></div>
+      <div class="row">
+        <div class="col-md-6">
+          <img class="w-100" src={{producto.pic1_producto}} alt="" />
+        </div>
+        <div class="col-md-6">
+          <h5>Nombre: {{producto.nombre}}</h5>
+          <p>Categoria: {{producto.categoria}}</p>
+          <p>Codigo: {{producto.producto_id}}</p>
+          <p>Stock: {{producto.stock}}</p>
+          <p>Vendidos: {{producto.total_ventas}}</p>
+          <p>Valor: ${{producto.valor}}</p>
+          <p>Creación:
+            {{producto.creacion}}
+            <br />
+            {{timeago producto.creacion}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Descripción del producto</h5>
+          <p>{{producto.descripcion}}</p>
+        </div>
+        <div class="col-md-3">
+          <img class="w-100" src={{producto.pic1_producto}} alt="" />
+        </div>
+        <div class="col-md-3">
+          <img class="w-100" src={{producto.pic2_producto}} alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -37,9 +37,9 @@
                 <td>{{total_ventas}}</td>
                 <td>{{timeago creacion}}</td>
                 <td>
-                  <a href="" class="btn btn-info">E</a>
-                  <a href="" class="btn btn-success">V</a>
-                  <a href="" class="btn btn-danger">D</a>
+                  <a href="/productos/moreProductos/{{producto_id}}" class="btn btn-success"><i class="fas fa-seedling"></i></a>
+                  <a href="/productos/editProductos/{{producto_id}}" class="btn btn-info"><i class="fas fa-user-edit"></i></a>
+                  <a href="/productos/deleteProductos/{{producto_id}}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
                 </td>
               </tr>
             {{/each}}

@@ -10,6 +10,24 @@ CREATE TABLE productos(
     descripcion TEXT NOT NULL,
     pic1_producto TEXT NOT NULL DEFAULT 'assets/img/sinFoto.jpg',
     pic2_producto TEXT DEFAULT 'assets/img/sinFoto.jpg',
-    clients_id INT(11) NOT NULL ,
+    clients_id INT(11) NOT NULL,
     CONSTRAINT fk_producto_cliente FOREIGN KEY (clients_id) REFERENCES clients(clients_id)
+);
+CREATE TABLE ventas(
+    ventas_id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    cantidad INT(11) NOT NULL,
+    fecha TIMESTAMP NOT NULL DEFAULT NOW(),
+    clients_id INT(11) NOT NULL,
+    usuarios_id INT(11) NOT NULL,
+    productos_id INT(11) NOT NULL,
+    CONSTRAINT fk_ventas_clientes FOREIGN KEY (clients_id) REFERENCES clients(clients_id),
+    CONSTRAINT fk_ventas_usuarios FOREIGN KEY (usuarios_id) REFERENCES usuarios(usuarios_id),
+    CONSTRAINT fk_ventas_productos FOREIGN KEY (productos_id) REFERENCES productos(producto_id)
+);
+
+CREATE TABLE usuarios(
+    usuarios_id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL
 );

@@ -1,0 +1,118 @@
+<h3>Editar Producto</h3>
+
+<form
+  action="/productos/editProductos/{{producto.producto_id}}"
+  method="POST"
+  enctype="multipart/form-data"
+>
+  <div class="row">
+    <div class="mb-3 col-md-6">
+      <label for="nombre" class="form-label">Nombre del producto</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nombre"
+        name="nombre"
+        value="{{producto.nombre}}"
+        required
+        autofocus
+      />
+      <div class="form-text">Ingresa el nombre preciso de tu producto</div>
+    </div>
+    <div class="mb-3 col-md-6">
+      <label for="categoria" class="form-label">Categoria del producto</label>
+      <select class="form-select" required name="categoria" id="categoria">
+        <option value="semilla">Semilla</option>
+        <option value="esquejes">Esquejes</option>
+        <option value="flores">Flores</option>
+        <option value="planta">Planta</option>
+        <option value="cactus">Cactus</option>
+        <option value="suculentas">Suculentas</option>
+        <option value="arbol">Arbol</option>
+        <option value="tierra">Tierra</option>
+        <option value="fertilizante">Fertilizante</option>
+        <option value="insumos">Insumos</option>
+      </select>
+      <div class="form-text">Selecciona la categoria que más se le acerca a tu
+        producto</div>
+    </div>
+    <div class="mb-3 col-md-3">
+      <label for="stock" class="form-label">Stock del producto</label>
+      <input
+        type="number"
+        class="form-control"
+        id="stock"
+        name="stock"
+        required
+        autofocus
+        value="{{producto.stock}}"
+      />
+      <div class="form-text">Ingresa el stock actual de tu producto</div>
+    </div>
+    <div class="mb-3 col-md-3">
+      <label for="valor" class="form-label">Valor del producto</label>
+      <input
+        type="number"
+        class="form-control"
+        id="valor"
+        name="valor"
+        required
+        autofocus
+        value="{{producto.valor}}"
+      />
+      <div class="form-text">Ingresa el valor de tu producto</div>
+    </div>
+
+    <div class="mb-3 col-md-6">
+      <label for="descripcion" class="form-label">Descripción del producto</label>
+      <textarea
+        class="form-control"
+        id="descripcion"
+        name="descripcion"
+        rows="3"
+      >{{producto.descripcion}}</textarea>
+    </div>
+
+    <div class="mb-3 form-group col-md-6">
+      <label for="pic1_producto" class="form-label d-block">Foto principal
+        (Obligatoria)</label>
+      <img
+        style="width: 200px; height: 200px;object-fit: cover;"
+        src={{producto.pic1_producto}}
+        alt=""
+      />
+      <input
+        type="file"
+        name="pic1_producto"
+        id="pic1_producto"
+        class="form-control"
+        accept="image/png, .jpeg, .jpg, image/gif"
+        required
+      />
+      <div class="form-text">Máximo 2MB. Solo acepta archivos formato: .jpg
+        .jpeg .png .gif
+      </div>
+    </div>
+    <div class="mb-3 form-group col-md-6">
+      <label for="pic1_producto" class="form-label d-block">Foto secundaria</label>
+      <img
+        style="width: 200px; height: 200px;object-fit: cover;"
+        src={{producto.pic2_producto}}
+        alt=""
+      />
+      <input
+        type="file"
+        name="pic2_producto"
+        id="pic2_producto"
+        class="form-control"
+        accept="image/png, .jpeg, .jpg, image/gif"
+      />
+      <div class="form-text">Máximo 2MB. Solo acepta archivos formato: .jpg
+        .jpeg .png .gif
+      </div>
+    </div>
+
+  </div>
+
+  <button type="submit" class="btn btn-success">Agregar</button>
+</form>

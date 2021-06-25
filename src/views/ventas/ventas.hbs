@@ -8,24 +8,80 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
+              <th scope="col">Usuario</th>
+              <th scope="col">Email</th>
+              <th scope="col">Telefono</th>
+              <th scope="col">Región</th>
+              <th scope="col">Comuna</th>
+              <th scope="col">Direccion</th>
+              <th scope="col">Producto</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Total</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Opciones</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
+            {{#each ventas}}
+              <tr>
+                <th scope="row">{{ventas_id}}</th>
+                <td>{{usuarios_id}}</td>
+                <td>{{usuarios_id}}</td>
+                <td>{{usuarios_id}}</td>
+                <td>{{usuarios_id}}</td>
+                <td>{{usuarios_id}}</td>
+                <td>{{usuarios_id}}</td>
+                <td>{{usuarios_id}}</td>
+                <td>{{productos_id}}</td>
+                <td>{{cantidad}}</td>
+                <td>{{timeago fecha}}</td>
+                <td>
+                  {{#if visto}}
+                    <a
+                      href="ventas/visto/{{ventas_id}}"
+                      class="btn btn-success"
+                    ><i class="far fa-eye"></i></a>
+                  {{else}}
+                    <a
+                      href="ventas/NoVisto/{{ventas_id}}"
+                      class="btn btn-secondary"
+                    ><i class="far fa-eye"></i></a>
+                  {{/if}}
+                  {{#if enviado}}
+                    <a
+                      href="ventas/enviado/{{ventas_id}}"
+                      class="btn btn-success"
+                    ><i class="fas fa-dolly"></i></a>
+                  {{else}}
+                    <a
+                      href="ventas/NoEnviado/{{ventas_id}}"
+                      class="btn btn-secondary"
+                    ><i class="fas fa-dolly"></i></a>
+                  {{/if}}
+
+                  <a
+                    href="ventas/mensajes/{{usuarios_id}}"
+                    class="btn btn-info"
+                  ><i class="far fa-comments"></i></a>
+
+                  {{#if completado}}
+                    <a
+                      href="ventas/terminado/{{ventas_id}}"
+                      class="btn btn-success"
+                    ><i class="far fa-check-square"></i></a>
+                  {{else}}
+                    <a
+                      href="ventas/NoTerminado/{{ventas_id}}"
+                      class="btn btn-secondary"
+                    ><i class="far fa-check-square"></i></a>
+                  {{/if}}
+                  <a
+                    href="ventas/eliminar/{{ventas_id}}"
+                    class="btn btn-danger"
+                  ><i class="far fa-trash-alt"></i></a>
+                </td>
+              </tr>
+            {{/each}}
           </tbody>
         </table>
       </div>

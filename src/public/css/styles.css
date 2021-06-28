@@ -8,6 +8,7 @@ body {
     background-color: #b2a9004d;
     font-family: "Lato", Arial, Helvetica, sans-serif;
     overflow-x: hidden;
+    height: 100vh;
 }
 .containerMain{
     display: flex;
@@ -107,4 +108,24 @@ body {
     width: 100px;
     height: 100px;
     object-fit: cover;
+}
+
+
+/*Login*/
+
+.login{
+    height: 100%;
+    background-image: url(../assets/img/wp-Login.jpg);
+}
+.login .col-md-3{
+    background-color: #fff;
+    padding: 30px;
+}
+.login .form-login{
+    width: 100%;
+    text-align: center;
+}
+.login .form-login button{
+    background-color: #b2a800;
+    border: none;
 }

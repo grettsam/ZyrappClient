@@ -46,9 +46,8 @@ router.use(
   }).fields([{ name: "pic1_producto" }, { name: "pic2_producto" }])
 );
 
-router.get("/", (req, res) => {
-    res.render('perfil/perfil')
-  });
-
+router.get("/", isLoginIn, (req, res) => {
+  res.render("perfil/perfil");
+});
 
 module.exports = router;

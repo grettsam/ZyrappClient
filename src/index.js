@@ -62,6 +62,7 @@ app.use((req, res, next) => {
 // Rutas
 app.use(require("./routes"));
 app.use(require("./routes/authentication"));
+app.use(require("./routes/login"));
 
 app.use("/reportes", require("./routes/reportes"));
 app.use("/productos", require("./routes/productos"));

@@ -48,14 +48,17 @@ router.use(
 
 //*******            SHOW            ******/
 //Metodo async para ver los productos en la vista principal
-router.get("/", async (req, res) => {
-  const productos = await pool.query("SELECT * FROM productos");
+router.get("/", isLoginIn, async (req, res) => {
+  const productos = await pool.query(
+    "SELECT * FROM productos WHERE clients_id = ?",
+    [req.user.clients_id]
+  );
   res.render("productos/productos", { productos });
 });
 
 //*******            CREATE            ******/
 //Metodo async para enviar la query para agregar un nuevo producto.
-router.get("/addProductos", (req, res) => {
+router.get("/addProductos", isLoginIn, (req, res) => {
   res.render("productos/addProductos");
 });
 router.post("/addProductos", async (req, res) => {
@@ -68,15 +71,20 @@ router.post("/addProductos", async (req, res) => {
     descripcion,
     pic1_producto: `http://localhost:4000/upload/productos/${picProducto[0]}`,
     pic2_producto: `http://localhost:4000/upload/productos/${picProducto[1]}`,
-    // admin_id: req.user.admin_id,
+    clients_id: req.user.clients_id,
   };
   await pool.query(`INSERT INTO productos set ?`, [newProducto]);
+
+  while (picProducto.length > 0) {
+    picProducto.pop();
+  }
+
   res.redirect("/productos");
 });
 
 //*******            MORE            ******/
 //Metodo async para ver el detalle completo del producto
-router.get("/moreProductos/:id", async (req, res) => {
+router.get("/moreProductos/:id", isLoginIn, async (req, res) => {
   const { id } = req.params;
   const productos = await pool.query(
     "SELECT * FROM productos WHERE producto_id = ?",
@@ -87,7 +95,7 @@ router.get("/moreProductos/:id", async (req, res) => {
 
 //*******            DELETE            ******/
 //Metodo async para eliminar un producto
-router.get("/deleteProductos/:id", async (req, res) => {
+router.get("/deleteProductos/:id", isLoginIn, async (req, res) => {
   const { id } = req.params;
   const productos = await pool.query(
     "DELETE FROM productos WHERE producto_id = ?",
@@ -98,7 +106,7 @@ router.get("/deleteProductos/:id", async (req, res) => {
 
 //*******            UPDATE            ******/
 //Metodo async para ver el detalle completo del producto
-router.get("/editProductos/:id", async (req, res) => {
+router.get("/editProductos/:id", isLoginIn, async (req, res) => {
   const { id } = req.params;
   const productos = await pool.query(
     "SELECT * FROM productos WHERE producto_id = ?",
@@ -106,7 +114,7 @@ router.get("/editProductos/:id", async (req, res) => {
   );
   res.render("productos/editProductos", { producto: productos[0] });
 });
-router.post("/editProductos/:id", async (req, res) => {
+router.post("/editProductos/:id", isLoginIn, async (req, res) => {
   const { id } = req.params;
   const { nombre, categoria, stock, valor, descripcion } = req.body;
   const newProducto = {

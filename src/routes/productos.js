@@ -50,7 +50,7 @@ router.use(
 //Metodo async para ver los productos en la vista principal
 router.get("/", isLoginIn, async (req, res) => {
   const productos = await pool.query(
-    "SELECT * FROM productos WHERE clients_id = ?",
+    "SELECT productos.* , SUM(ventas.cantidad) AS cantidadVentas FROM productos INNER JOIN ventas ON productos.producto_id = ventas.productos_id WHERE producto_id = ?",
     [req.user.clients_id]
   );
   res.render("productos/productos", { productos });
@@ -60,7 +60,9 @@ router.get("/", isLoginIn, async (req, res) => {
 //Metodo async para enviar la query para agregar un nuevo producto.
 router.get("/addProductos", isLoginIn, (req, res) => {
   res.render("productos/addProductos");
+;
 });
+
 router.post("/addProductos", async (req, res) => {
   const { nombre, categoria, stock, valor, descripcion } = req.body;
   const newProducto = {
@@ -74,11 +76,9 @@ router.post("/addProductos", async (req, res) => {
     clients_id: req.user.clients_id,
   };
   await pool.query(`INSERT INTO productos set ?`, [newProducto]);
-
   while (picProducto.length > 0) {
     picProducto.pop();
   }
-
   res.redirect("/productos");
 });
 

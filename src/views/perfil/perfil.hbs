@@ -1,39 +1,22 @@
 <h3>Perfil</h3>
-  <h5>Tu plan caduca el dia : 20-06-2021</h5>
-<div class="row">
+
+
+  <form action="/perfil/updatePerfil" method="post" enctype="multipart/form-data">
   <div class="mb-3 col-md-6 d-block">
     <img
       style="object-fit: cover; border-radius: 50%;"
       width="100"
       height="100"
-      src="https://www.latercera.com/resizer/7r1cmp-c7_EOLMTLQhklYxK02TU=/900x600/smart/arc-anglerfish-arc2-prod-copesa.s3.amazonaws.com/public/QEV2YMMZKNDOTA6MYCRQCX6O2Q.jpg"
-      alt=""
+      src={{user.pic_perfil}}
     />
-    <button>Cambiar foto</button>
+    <input type="file" name="pic_perfil" id="pic_perfil">
   </div>
-  <div class="mb-3 col-md-3">
-    <h4>Actualmente tienes el plan: Basico </h4>
-    <button type="button" class="btn btn-success">Cambiar de plan</button>
-  </div>
-  <div class="mb-3 col-md-3">
-    <label class="form-label">Renueva de plan</label>
-    <button type="button" class="btn btn-success">Renueva</button>
-  </div>
-</div>
-<form action="" method="post">
+
+
   <div class="row">
     <div class="mb-3 col-md-3">
-      <label for="NombreTienda" class="form-label">Nombre de la tienda</label>
-      <input
-        type="text"
-        class="form-control"
-        id="NombreTienda"
-        name="nombreTienda"
-      />
-    </div>
-    <div class="mb-3 col-md-3">
       <label for="email" class="form-label">Email</label>
-      <input type="email" class="form-control" id="email" name="email" />
+      <input type="email" class="form-control" id="email" name="email" value="{{user.email}}" />
     </div>
     <div class="mb-3 col-md-3">
       <label for="password" class="form-label">Contraseña</label>
@@ -42,30 +25,31 @@
         class="form-control"
         id="password"
         name="password"
+        value="{{user.password}}"
       />
     </div>
     <div class="mb-3 col-md-3">
       <label for="cuenta" class="form-label">Numero de cuenta a depositar</label>
-      <input type="number" class="form-control" id="cuenta" name="cuenta" />
+      <input type="number" class="form-control" id="cuenta" name="cuenta"  value="{{user.banco}}"/>
     </div>
   </div>
   <h4>Dirección</h4>
   <div class="row">
     <div class="mb-3 col-md-3">
       <label for="telefono" class="form-label">Telefono</label>
-      <input type="number" class="form-control" id="telefono" name="telefono" />
+      <input type="number" class="form-control" id="telefono" name="telefono" value="{{user.telefono}}"/>
     </div>
     <div class="mb-3 col-md-3">
       <label for="region" class="form-label">Región</label>
-      <input type="text" class="form-control" id="region" name="region" />
+      <input type="text" class="form-control" id="region" name="region" value="{{user.region}}" />
     </div>
     <div class="mb-3 col-md-3">
       <label for="comuna" class="form-label">Comuna</label>
-      <input type="text" class="form-control" id="comuna" name="comuna" />
+      <input type="text" class="form-control" id="comuna" name="comuna" value="{{user.comuna}}"/>
     </div>
     <div class="mb-3 col-md-3">
       <label for="direccion" class="form-label">Dirección</label>
-      <input type="text" class="form-control" id="direccion" name="direccion" />
+      <input type="text" class="form-control" id="direccion" name="direccion" value="{{user.direccion}}"/>
     </div>
 
   </div>
@@ -74,31 +58,23 @@
   <div class="row">
     <div class="mb-3 col-md-3">
       <label for="web" class="form-label">Sitio Web</label>
-      <input type="text" class="form-control" id="web" name="web" />
+      <input type="text" class="form-control" id="sitioWeb" name="sitioWeb" value="{{user.sitioWeb}}"/>
     </div>
     <div class="mb-3 col-md-3">
       <label for="facebook" class="form-label">Facebook</label>
-      <input type="text" class="form-control" id="facebook" name="facebook" />
+      <input type="text" class="form-control" id="facebook" name="facebook" value="{{user.facebook}}"/>
     </div>
     <div class="mb-3 col-md-3">
       <label for="instagram" class="form-label">Instagram</label>
-      <input type="text" class="form-control" id="instagram" name="instagram" />
+      <input type="text" class="form-control" id="instagram" name="instagram" value="{{user.instagram}}"/>
     </div>
     <div class="mb-3 col-md-3">
       <label for="twitter" class="form-label">Twitter</label>
-      <input type="text" class="form-control" id="twitter" name="twitter" />
+      <input type="text" class="form-control" id="twitter" name="twitter" value="{{user.twitter}}" />
     </div>
   </div>
 
-  <div class="mb-3">
-    <label for="descripcion" class="form-label">Cuentanos que vende tu tienda</label>
-    <textarea
-      class="form-control"
-      id="descripcion"
-      name="descripcion"
-      rows="3"
-    ></textarea>
-  </div>
+
   <button type="submit" class="btn btn-success">Actualizar</button>
 </form>
 

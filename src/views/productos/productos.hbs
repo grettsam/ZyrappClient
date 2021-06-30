@@ -34,7 +34,7 @@
                 <td>{{categoria}}</td>
                 <td>{{stock}}</td>
                 <td>{{valor}}</td>
-                <td>{{total_ventas}}</td>
+                <td>{{cantidadVentas}}</td>
                 <td>{{timeago creacion}}</td>
                 <td>
                   <a href="/productos/moreProductos/{{producto_id}}" class="btn btn-success"><i class="fas fa-seedling"></i></a>
@@ -57,7 +57,7 @@
           {{#each productos}}
             <div class="producto-item">
               <img src={{pic1_producto}} />
-              <p>{{nombre}}<br />{{total_ventas}} unidades</p>
+              <p>{{nombre}}<br />{{cantidadVentas}} unidades</p>
             </div>
           {{/each}}
         </div>
@@ -74,7 +74,7 @@
           {{#each productos}}
             <div class="producto-item">
               <img src={{pic1_producto}} />
-              <p>{{nombre}}<br />{{total_ventas}} unidades</p>
+              <p>{{nombre}}<br />{{cantidadVentas}} unidades</p>
             </div>
           {{/each}}
         </div>

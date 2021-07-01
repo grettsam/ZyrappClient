@@ -50,17 +50,25 @@ router.use(
 //Metodo async para ver los productos en la vista principal
 router.get("/", isLoginIn, async (req, res) => {
   const productos = await pool.query(
-    "SELECT productos.* , SUM(ventas.cantidad) AS cantidadVentas FROM productos INNER JOIN ventas ON productos.producto_id = ventas.productos_id WHERE producto_id = ?",
+    "SELECT productos.*, ventas.total AS cantidadVentas FROM productos LEFT JOIN (SELECT productos_id,  SUM(cantidad) AS total FROM ventas GROUP BY productos_id) AS ventas ON productos.producto_id = ventas.productos_id WHERE productos.clients_id=?  GROUP BY productos.producto_id",
     [req.user.clients_id]
   );
-  res.render("productos/productos", { productos });
+  const masVendidos = await pool.query(
+    "SELECT productos.*, ventas.total AS cantidadVentas FROM productos LEFT JOIN (SELECT productos_id,  SUM(cantidad) AS total FROM ventas GROUP BY productos_id) AS ventas ON productos.producto_id = ventas.productos_id WHERE productos.clients_id=?  GROUP BY productos.producto_id ORDER BY ventas.total DESC LIMIT 10",
+    [req.user.clients_id]
+  );
+  const menosVendidos = await pool.query(
+    "SELECT productos.*, ventas.total AS cantidadVentas FROM productos LEFT JOIN (SELECT productos_id,  SUM(cantidad) AS total FROM ventas GROUP BY productos_id) AS ventas ON productos.producto_id = ventas.productos_id WHERE productos.clients_id=?  GROUP BY productos.producto_id ORDER BY ventas.total ASC LIMIT 10",
+    [req.user.clients_id]
+  );
+
+  res.render("productos/productos", { productos, masVendidos, menosVendidos });
 });
 
 //*******            CREATE            ******/
 //Metodo async para enviar la query para agregar un nuevo producto.
 router.get("/addProductos", isLoginIn, (req, res) => {
   res.render("productos/addProductos");
-;
 });
 
 router.post("/addProductos", async (req, res) => {
@@ -71,7 +79,7 @@ router.post("/addProductos", async (req, res) => {
     stock,
     valor,
     descripcion,
-    pic1_producto: `http://localhost:4000/upload/productos/${picProducto[0]}`,
+    pic1_producto: `http://localhost:4000/upload/productos/${picProducto[0]}`, 
     pic2_producto: `http://localhost:4000/upload/productos/${picProducto[1]}`,
     clients_id: req.user.clients_id,
   };
@@ -97,6 +105,10 @@ router.get("/moreProductos/:id", isLoginIn, async (req, res) => {
 //Metodo async para eliminar un producto
 router.get("/deleteProductos/:id", isLoginIn, async (req, res) => {
   const { id } = req.params;
+  const ventas = await pool.query(
+    "DELETE FROM ventas WHERE productos_id = ?",
+    [id]
+  );
   const productos = await pool.query(
     "DELETE FROM productos WHERE producto_id = ?",
     [id]

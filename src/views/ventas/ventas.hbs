@@ -25,15 +25,15 @@
             {{#each ventas}}
               <tr>
                 <th scope="row">{{ventas_id}}</th>
-                <td>{{usuarios_id}}</td>
-                <td>{{usuarios_id}}</td>
-                <td>{{usuarios_id}}</td>
-                <td>{{usuarios_id}}</td>
-                <td>{{usuarios_id}}</td>
-                <td>{{usuarios_id}}</td>
-                <td>{{usuarios_id}}</td>
-                <td>{{productos_id}}</td>
+                <td>{{username}}</td>
+                <td>{{email}}</td>
+                <td>{{telefono}}</td>
+                <td>{{region}}</td>
+                <td>{{comuna}}</td>
+                <td>{{direccion}}</td>
+                <td>{{nombre}}</td>
                 <td>{{cantidad}}</td>
+                <td>${{monto}}</td>
                 <td>{{timeago fecha}}</td>
                 <td>
                   {{#if visto}}
@@ -58,12 +58,6 @@
                       class="btn btn-secondary"
                     ><i class="fas fa-dolly"></i></a>
                   {{/if}}
-
-                  <a
-                    href="ventas/mensajes/{{usuarios_id}}"
-                    class="btn btn-info"
-                  ><i class="far fa-comments"></i></a>
-
                   {{#if completado}}
                     <a
                       href="ventas/terminado/{{ventas_id}}"
@@ -76,9 +70,13 @@
                     ><i class="far fa-check-square"></i></a>
                   {{/if}}
                   <a
+                    href="ventas/mensajes/{{usuarios_id}}"
+                    class="btn btn-info"
+                  ><i class="far fa-comments"></i></a>
+                  {{!-- <a
                     href="ventas/eliminar/{{ventas_id}}"
                     class="btn btn-danger"
-                  ><i class="far fa-trash-alt"></i></a>
+                  ><i class="far fa-trash-alt"></i></a> --}}
                 </td>
               </tr>
             {{/each}}

@@ -34,12 +34,25 @@
                 <td>{{categoria}}</td>
                 <td>{{stock}}</td>
                 <td>{{valor}}</td>
-                <td>{{cantidadVentas}}</td>
+                {{#if cantidadVentas}}
+                  <td>{{cantidadVentas}}</td>
+                {{else}}
+                  <td>0</td>
+                {{/if}}
                 <td>{{timeago creacion}}</td>
                 <td>
-                  <a href="/productos/moreProductos/{{producto_id}}" class="btn btn-success"><i class="fas fa-seedling"></i></a>
-                  <a href="/productos/editProductos/{{producto_id}}" class="btn btn-info"><i class="fas fa-user-edit"></i></a>
-                  <a href="/productos/deleteProductos/{{producto_id}}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                  <a
+                    href="/productos/moreProductos/{{producto_id}}"
+                    class="btn btn-success"
+                  ><i class="fas fa-seedling"></i></a>
+                  <a
+                    href="/productos/editProductos/{{producto_id}}"
+                    class="btn btn-info"
+                  ><i class="fas fa-user-edit"></i></a>
+                  <a
+                    href="/productos/deleteProductos/{{producto_id}}"
+                    class="btn btn-danger"
+                  ><i class="far fa-trash-alt"></i></a>
                 </td>
               </tr>
             {{/each}}
@@ -54,10 +67,16 @@
         <h4 class="card-title">Productos más vendidos</h4>
         <div class="item-slider">
           {{! Hay que cambiar el nombre de abajo ya que tiene que mostrar los mas vendidos }}
-          {{#each productos}}
+          {{#each masVendidos}}
             <div class="producto-item">
               <img src={{pic1_producto}} />
-              <p>{{nombre}}<br />{{cantidadVentas}} unidades</p>
+              <p>{{nombre}}<br />
+                {{#if cantidadVentas}}
+                  {{cantidadVentas}}
+                {{else}}
+                  0
+                {{/if}}
+                unidades</p>
             </div>
           {{/each}}
         </div>
@@ -71,10 +90,16 @@
         <h4 class="card-title">Productos menos vendidos</h4>
         <div class="item-slider">
           {{! Hay que cambiar el nombre de abajo ya que tiene que mostrar los menos vendidos }}
-          {{#each productos}}
+          {{#each menosVendidos}}
             <div class="producto-item">
               <img src={{pic1_producto}} />
-              <p>{{nombre}}<br />{{cantidadVentas}} unidades</p>
+              <p>{{nombre}}<br />
+                {{#if cantidadVentas}}
+                  {{cantidadVentas}}
+                {{else}}
+                  0
+                {{/if}}
+                unidades</p>
             </div>
           {{/each}}
         </div>

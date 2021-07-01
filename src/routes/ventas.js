@@ -6,14 +6,21 @@ const { isLoginIn } = require("../lib/auth");
 
 router.get("/", isLoginIn, async (req, res) => {
   // const ventas = await pool.query("SELECT * FORM ventas WHERE clients_id = ?",[id]);
-  const ventas = await pool.query("SELECT * FROM ventas");
+  const ventas = await pool.query("SELECT usuarios.*, ventas.*, ventas.ventas_id, ventas.cantidad, ventas.monto, productos.nombre FROM usuarios ,ventas INNER JOIN productos ON ventas.productos_id = productos.producto_id");
   res.render("ventas/ventas", { ventas });
 });
+
+
+
+
+
+
 
 /******************Estado de leido*********************/
 router.get("/visto/:id", isLoginIn, async (req, res) => {
   const { id } = req.params;
   await pool.query(`UPDATE ventas set visto = false WHERE ventas_id= ?`, [id]);
+  console.log(id);
   req.flash("success", " El cliente no esta visible");
   res.redirect("/ventas");
 });
@@ -21,6 +28,7 @@ router.get("/visto/:id", isLoginIn, async (req, res) => {
 router.get("/NoVisto/:id", isLoginIn, async (req, res) => {
   const { id } = req.params;
   await pool.query(`UPDATE ventas set visto = true WHERE ventas_id= ?`, [id]);
+  console.log(id);
   req.flash("success", " El cliente no esta visible");
   res.redirect("/ventas");
 });
